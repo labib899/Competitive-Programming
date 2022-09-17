@@ -21,11 +21,16 @@ typedef priority_queue<ll> pqll;
 void solve();
 
 int main() {
+#ifndef ONLINE_JUDGE
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
     fastIO;
-    ll t=1; //cin>>t;
+    ll t; cin>>t;
     while(t--) solve();
 }
 
 void solve() {
     
 }
+
