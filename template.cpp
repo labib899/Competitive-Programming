@@ -17,7 +17,15 @@ typedef pair<int,int> pi;
 typedef priority_queue<ll> pqll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
-int main()
-{
+
+void solve();
+
+int main() {
     fastIO;
+    ll t=1; //cin>>t;
+    while(t--) solve();
+}
+
+void solve() {
+    
 }
