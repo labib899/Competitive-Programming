@@ -43,11 +43,11 @@ void solve() {
     int ans=0,xorr=0;
     for(auto x:v) {
         xorr= xorr^x;
-        freq[xorr]++;
         if(xorr==k)
             ans++;
         if(freq.find(xorr^k)!=freq.end())
             ans+=freq[xorr^k];
+        freq[xorr]++;
     }
     cout<<ans<<endl;
 }
