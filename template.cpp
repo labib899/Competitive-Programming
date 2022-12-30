@@ -7,6 +7,8 @@ using namespace std;
 #define endl "\n"
 #define pb push_back
 #define mp make_pair
+#define all(x) x.begin(),x.end()
+#define forn(j,n,x) for(ll i=j;i<n;i+=x)
 typedef long long ll;
 typedef long double ld;
 typedef vector<int> vi;
