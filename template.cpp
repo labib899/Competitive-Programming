@@ -12,10 +12,13 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 typedef vector<int> vi;
+typedef vector<vi> vvi;
 typedef vector<ll> vll;
+typedef vector<vll> vvll;
 typedef vector<string> vs;
-typedef pair<ll,ll> pll;
 typedef pair<int,int> pi;
+typedef pair<ll,ll> pll;
+typedef priority_queue<int> pqi;
 typedef priority_queue<ll> pqll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
