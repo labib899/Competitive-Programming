@@ -37,6 +37,6 @@ ll pow(ll x,ll p,ll m) {
     if(p==0) return 1%m;
     ll a=pow(x,p/2,m);
     a=(a*a)%m;
-    if(p%2) a=(a*x)%m;
+    if(p&1) a=(a*x)%m;
     return a;
 }
