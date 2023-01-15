@@ -42,7 +42,8 @@ void solve()
 }
 
 ll pow(ll a,ll b,ll m)
-{
+{   
+    a=a%m; // if a is very large
     ll ans=1;
     while(b)
     {
