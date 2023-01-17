@@ -16,7 +16,7 @@ int ed(int i,int j)
     if(j<0) return i+1;
     if(dp[i][j]!=-1) return dp[i][j];
     if(s[i]==t[j]) dp[i][j]=ed(i-1,j-1);
-    else dp[i][j]=1+min3(ed(i-1,j-1),ed(i-1,j),ed(i,j-1));
+    else dp[i][j]=1+min3(ed(i-1,j-1),ed(i-1,j),ed(i,j-1)); //substitute, delete, insert
     return dp[i][j];
 }
 
