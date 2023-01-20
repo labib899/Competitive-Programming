@@ -3,26 +3,41 @@ using namespace std;
 
 typedef vector<int> vi;
 
-const int N=1e3+10;
-vector<vi> dp(N+1,vi(N+1,-1));
+vi price;
 
-int rev(int i,int n,vi price)
+// top down
+int rev(int n,vi &dp)
 {
-    if(i==1) return n*price[1];
-    if(dp[i][n]!=-1) return dp[i][n];
-    int no=rev(i-1,n,price);
-    int yes=0;
-    if(i<=n) yes=price[i]+rev(i,n-i,price);
-    return dp[i][n]=max(yes,no);
+    if(n==0) return 0;
+    if(dp[n]!=-1) return dp[n];
+    int ans=INT_MIN;
+    for(int i=1;i<=n;i++)
+    {
+        int c=price[i]+rev(n-i,dp);
+        ans=max(ans,c);
+    }
+    return dp[n]=ans;
 }
+
 
 int main()
 {
     int n; cin>>n;
-    vi price(n+1);
+    price.resize(n+1);
     for(int i=1;i<=n;i++) cin>>price[i];
-    cout<<rev(n,n,price)<<endl;
+    vi dp(n+2,-1);
+    cout<<rev(n,dp)<<endl;
 }
 
 
 
+/* bottom up
+int rev(int n)
+{
+    dp[0]=0;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=i;j++)
+            dp[i]=max(dp[i],price[j]+dp[i-j]);
+    return dp[n];
+}
+*/
