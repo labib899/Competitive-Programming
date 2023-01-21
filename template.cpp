@@ -16,6 +16,8 @@ using namespace std;
 #define max3(a,b,c)             max(a,max(b,c))
 #define max4(a,b,c,d)           max(a,max(b,max(c,d)))
 #define print(v)                for(auto x:v) cout<<x<<" ";cout<<endl;
+#define F                       first
+#define S                       second
 typedef long long               ll;
 typedef long double             ld;
 typedef vector<int>             vi;
