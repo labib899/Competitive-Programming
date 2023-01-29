@@ -3,7 +3,7 @@
 using namespace std;
 //using namespace __gnu_pbds;
  
-#define fastIO                  ios::sync_with_stdio(0); cin.tie(0);
+#define fastIO                  ios::sync_with_stdio(0);cin.tie(0);
 #define fRead(x)                freopen(x,"r",stdin)
 #define fWrite(x)               freopen(x,"w",stdout)
 #define endl                    "\n"
@@ -15,7 +15,7 @@ using namespace std;
 #define min4(a,b,c,d)           min(a,min(b,min(c,d)))
 #define max3(a,b,c)             max(a,max(b,c))
 #define max4(a,b,c,d)           max(a,max(b,max(c,d)))
-#define print(v)                for(auto x:v) cout<<x<<" "; cout<<endl;
+#define print(v)                for(auto x:v) cout<<x<<" ";cout<<endl;
 #define F                       first
 #define S                       second
 typedef long long               ll;
@@ -42,8 +42,12 @@ int main()
     //fWrite("output.txt");
 #endif
     fastIO;
-    ll t=1; cin>>t;
-    while(t--) solve();
+    int t=1; cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        //cout<<"Case "<<i<<": ";
+        solve();
+    }
 }
 
 void solve()
