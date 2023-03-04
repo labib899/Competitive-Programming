@@ -1,5 +1,5 @@
-#include<bits/stdc++.h>
-//#include<ext/pb_ds/assoc_container.hpp>
+#include <bits/stdc++.h>
+//#include <ext/pb_ds/assoc_container.hpp>
 using namespace std;
 //using namespace __gnu_pbds;
  
@@ -16,8 +16,9 @@ using namespace std;
 #define max3(a,b,c)             max(a,max(b,c))
 #define max4(a,b,c,d)           max(a,max(b,max(c,d)))
 #define print(v)                for(auto x:v) cout<<x<<" ";cout<<endl;
-#define F                       first
-#define S                       second
+#define ff                      first
+#define ss                      second
+#define PQ                      priority_queue
 typedef long long               ll;
 typedef long double             ld;
 typedef vector<int>             vi;
@@ -27,11 +28,10 @@ typedef vector<vll>             vvll;
 typedef vector<string>          vs;
 typedef pair<int,int>           pii;
 typedef pair<ll,ll>             pll;
-typedef priority_queue<int>     pqi;
-typedef priority_queue<ll>      pqll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
 
+ll mod=1e9+7;
 void solve();
 
 
@@ -45,12 +45,12 @@ int main()
     int t=1; cin>>t;
     for(int i=1;i<=t;i++)
     {
-        //cout<<"Case "<<i<<": ";
+        //printf("Case %d: ", i);
         solve();
     }
 }
 
 void solve()
 {
-    
+
 }
