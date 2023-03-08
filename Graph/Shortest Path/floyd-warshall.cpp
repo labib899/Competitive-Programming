@@ -2,7 +2,6 @@
 using namespace std;
 
 
-#define pb              push_back
 typedef long long       ll;
 typedef vector<ll>      vll;
 typedef vector<vll>     vvll;
