@@ -2,7 +2,7 @@
 using namespace std;
 
 
-#define pb		    push_back
+#define pb			        push_back
 #define mt                  make_tuple
 typedef vector<int>         vi;
 typedef tuple<int,int,int>  tiii; 
