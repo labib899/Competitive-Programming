@@ -10,14 +10,14 @@ typedef tuple<int,int,int>  tiii;
 
 int main()
 {
-	int n,m; cin>>n>>m;
-	vector<tiii> adj;
-	for(int i=1;i<=m;i++)
-	{
-		int a,b,w; cin>>a>>b>>w;
-		adj.pb(mt(a,b,w));
-        	adj.pb(mt(b,a,w)); // for undirected graphs
-	}
+    int n,m; cin>>n>>m;
+    vector<tiii> adj;
+    for(int i=1;i<=m;i++)
+    {
+        int a,b,w; cin>>a>>b>>w;
+        adj.pb(mt(a,b,w));
+        adj.pb(mt(b,a,w)); // for undirected graphs
+    }
     vi distance(n+2,INT_MAX);
     int source; cin>>source;
     distance[source]=0;
