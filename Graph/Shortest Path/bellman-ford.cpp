@@ -2,7 +2,7 @@
 using namespace std;
 
 
-#define pb			        push_back
+#define pb		    push_back
 #define mt                  make_tuple
 typedef vector<int>         vi;
 typedef tuple<int,int,int>  tiii; 
@@ -16,7 +16,7 @@ int main()
 	{
 		int a,b,w; cin>>a>>b>>w;
 		adj.pb(mt(a,b,w));
-        adj.pb(mt(b,a,w)); // for undirected graphs
+        	adj.pb(mt(b,a,w)); // for undirected graphs
 	}
     vi distance(n+2,INT_MAX);
     int source; cin>>source;
