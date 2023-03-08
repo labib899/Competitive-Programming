@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define PQ				priority_queue
-#define pb				push_back
-#define ff 				first
-#define ss    			second
-typedef vector<int>		vi;
+#define PQ		priority_queue
+#define pb		push_back
+#define ff 		first
+#define ss    		second
+typedef vector<int>	vi;
 typedef pair<int,int>	pii;
 
 
