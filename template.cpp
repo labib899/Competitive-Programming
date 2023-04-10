@@ -29,8 +29,8 @@ typedef vector<vll>             vvll;
 typedef vector<string>          vs;
 typedef pair<int,int>           pii;
 typedef pair<ll,ll>             pll;
-typedef tuple<int,int,int>      tiii;
-typedef tuple<ll,ll,ll>         tlll;
+//typedef tuple<int,int,int>      tiii;
+//typedef tuple<ll,ll,ll>         tlll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
 
