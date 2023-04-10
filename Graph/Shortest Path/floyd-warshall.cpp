@@ -1,68 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 typedef long long       ll;
 typedef vector<ll>      vll;
-typedef vector<vll>     vvll;
 
+const ll inf=1e18;
+vector<vll> dist;
 
-int main()
+void floyd(ll n)
 {
-    ll n,m; cin>>n>>m;
-    vvll adj(n+2,vll(n+2)), distance(n+2,vll(n+2,INT_MAX));
+    for(int k=1;k<=n;k++)
+        for(int i=1;i<=n;i++)
+           for(int j=1;j<=n;j++)
+                if(dist[i][k]<inf && dist[k][j]<inf) // to handle negative weights
+                    dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j]);
+}
+
+void solve()
+{
+    ll n,m,q; cin>>n>>m>>q;
+    dist.resize(n+2,vll(n+2,inf));
     for(int i=1;i<=m;i++)
     {
-        int a,b,w; cin>>a>>b>>w;
-        adj[a][b]=w;
+        ll a,b,c; cin>>a>>b>>c;
+        dist[a][b]=dist[b][a]=min(c,dist[a][b]); // for multiple edges
     }
-    // initializing distance matrix
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            if(i==j) distance[i][j]=0;
-            else if(adj[i][j]) distance[i][j]=adj[i][j];
-        }
-    }
-    // floyed-warshall algo
-    for(int k=0;k<n;k++)
-    {
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                distance[i][j]=min(distance[i][j],distance[i][k]+distance[k][j]);
-            }
-        }
-    }
+    for(int i=1;i<=n;i++) dist[i][i]=0;
 
-    // checking negative cycle
-    for(int i=0;i<n;i++)
+    floyd(n);
+    while(q--)
     {
-        if(distance[i][i]<0) 
-        {
-            cout<<"Negative Cycle"<<endl;
-            return -1;
-        }
-    }
-    // printing solution
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++) 
-        {
-            if(distance[i][j]==INT_MAX) cout<<"INF ";
-            else cout<<distance[i][j]<<" ";
-        }
-        cout<<endl;
+        ll a,b; cin>>a>>b;
+        // if(a==b && dist[a][b]<0) then negative cycle exists...
+        if(dist[a][b]==inf) cout<<-1<<endl;
+        else cout<<dist[a][b]<<endl;
     }
 }
 
-
-/*
-4 4
-0 1 5
-0 3 10
-1 2 3
-2 3 1
-*/
+int main()
+{
+    int t=1; //cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+}
