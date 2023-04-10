@@ -1,64 +1,70 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define PQ		priority_queue
-#define pb		push_back
-#define ff 		first
-#define ss    		second
-typedef vector<int>	vi;
-typedef pair<int,int>	pii;
+#define fastIO          ios::sync_with_stdio(0);cin.tie(0);
+#define pb              push_back
+#define ff              first
+#define ss              second
+#define PQ              priority_queue
+typedef long long       ll;
+typedef vector<ll>      vll;
+typedef pair<ll,ll>     pll;
 
 
-int main()
+const ll inf=1e18;
+vll dist,vis;
+vector<vector<pll>> adj;
+ll source=1;
+
+
+void dijkstra()
 {
-    int n,m; cin>>n>>m;
-    vector<pii> adj[n+2];
+    dist[source]=0;
+    PQ<pll,vector<pll>,greater<pll>> pq;
+    pq.push({0,source}); // pushing {distance,node}
+    while(pq.size())
+    {
+        ll d=pq.top().ff;
+        ll node=pq.top().ss;
+        pq.pop();
+        if(vis[node]) continue;
+        vis[node]=1;
+        for(auto x:adj[node])
+        {
+            ll adjNode=x.ff, wt=x.ss;
+            if(d+wt<dist[adjNode]) // relaxation
+            {
+                dist[adjNode]=d+wt;
+                pq.push({dist[adjNode],adjNode});
+            }
+        }
+    }
+}
+
+void solve()
+{
+    ll n,m; cin>>n>>m;
+    dist.resize(n+2,inf);
+    adj.resize(n+2);
+    vis.resize(n+2);
+
     for(int i=1;i<=m;i++)
     {
-        int a,b,w; cin>>a>>b>>w;
-        adj[a].pb({b,w});
-        adj[b].pb({a,w});
+        ll a,b,c; cin>>a>>b>>c;
+        adj[a].pb({b,c});
     }
-    vi distance(n+2,INT_MAX);
-    int source; cin>>source; 
-    distance[source]=0;
-    PQ<pii,vector<pii>,greater<pii>> pq;
-    pq.push({0,source}); // push {dis,node}
-    while(pq.size())
-    {	
-	int d=pq.top().ff;
-	int node=pq.top().ss; 
-	pq.pop();
-	for(auto x:adj[node])
-	{
-	    int adjNode=x.ff,w=x.ss;
-	    if(d+w<distance[adjNode])
-	    {
-		distance[adjNode]=d+w;
-		pq.push({distance[adjNode],adjNode});
-	    }
-	}
-    }
-    // printing solution
-    for(int i=0;i<n;i++) cout<<distance[i]<<" ";
+    dijkstra();
+    // printing distance from source to every other node
+    for(int j=1;j<=n;j++) cout<<dist[j]<<" ";
     cout<<endl;
 }
 
-
-/*
-9 14
-0 1 4
-0 7 8
-1 2 8
-1 7 11
-2 3 7
-2 5 4
-2 8 2
-3 4 9
-3 5 14
-4 5 10
-5 6 2
-6 7 1
-6 8 6
-7 8 7
-*/
+int main()
+{
+    fastIO;
+    int t=1; //cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+}
