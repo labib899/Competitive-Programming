@@ -9,6 +9,7 @@ using namespace std;
 #define endl                    "\n"
 #define pb                      push_back
 #define mp                      make_pair
+#define mt                      make_tuple
 #define all(x)                  x.begin(),x.end()
 #define rep(i,l,r)              for(ll i=l;i<r;i++)
 #define min3(a,b,c)             min(a,min(b,c))
@@ -28,11 +29,18 @@ typedef vector<vll>             vvll;
 typedef vector<string>          vs;
 typedef pair<int,int>           pii;
 typedef pair<ll,ll>             pll;
+typedef tuple<int,int,int>      tiii;
+typedef tuple<ll,ll,ll>         tlll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
 
 ll mod=1e9+7;
-void solve();
+ll inf=1e18;
+
+void solve()
+{
+
+}
 
 
 int main()
@@ -48,9 +56,4 @@ int main()
         //printf("Case %d: ", i);
         solve();
     }
-}
-
-void solve()
-{
-
 }
