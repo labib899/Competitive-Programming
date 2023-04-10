@@ -1,50 +1,73 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
+#define fastIO              ios::sync_with_stdio(0);cin.tie(0);
+#define pb                  push_back
+#define mt                  make_tuple
+#define ff                  first
+#define ss                  second
+#define all(x)              x.begin(),x.end()
+#define PQ                  priority_queue
+typedef long long           ll;
+typedef vector<ll>          vll;
+typedef pair<ll,ll>         pll;
+typedef tuple<ll,ll,ll>     tlll;
 
-#define endl                    "\n"
-#define pb                      push_back
-#define F                       first
-#define S                       second
-typedef vector<int>             vi;
-typedef pair<int,int>           pii;
+const ll inf=1e18;
+vector<vector<pll>> adj;
+vector<pll> MST;
+vll vis;
+
+void prim(ll n)
+{
+    PQ<tlll,vector<tlll>,greater<tlll>> pq;
+    pq.push(mt(0,0,-1)); // pushing {distance,node,parent}
+    ll cost=0;
+    while(pq.size())
+    {
+        auto x=pq.top(); pq.pop();
+        ll w=get<0>(x);
+        ll node=get<1>(x), parent=get<2>(x);
+        if(vis[node]) continue;
+        vis[node]=1;
+        if(parent!=-1) MST.pb({parent,node}); // add edge to MST
+        cost+=w;
+        for(auto c:adj[node])
+        {
+            ll a=c.ff, wt=c.ss;
+            if(!vis[a]) pq.push(mt(wt,a,node));
+        }
+    }
+
+    cout<<"Minimum Spanning Tree Edges:"<<endl;
+    for(auto x:MST) cout<<x.ff<<" "<<x.ss<<endl;
+    cout<<"Minimum Cost: "<<cost<<endl;
+}
+
+void solve()
+{
+    ll n,m; cin>>n>>m;
+    adj.resize(n+2);
+    vis.resize(n+2,0);
+    for(int i=1;i<=m;i++)
+    {
+        ll a,b,w; cin>>a>>b>>w;
+        adj[a].pb({b,w});
+        adj[b].pb({a,w});
+    }
+
+    prim(n);
+}
 
 
 int main()
 {
-    int n,m; cin>>n>>m;
-    vi vis(n+1,0);
-    vector<pii> adj[n+1],MST;
-    for(int i=1;i<=m;i++)
+    fastIO;
+    int t=1; //cin>>t;
+    while(t--)
     {
-        int a,b,w; cin>>a>>b>>w;
-        adj[a].pb({b,w});
-        adj[b].pb({a,w});
+        solve();
     }
-    
-    priority_queue<pair<int,pii>,vector<pair<int,pii>>,greater<pair<int,pii>>> pq;
-    pq.push({0,{0,-1}}); // pushing weight,node and parent node
-    int cost=0;
-    while(!pq.empty())
-    {
-        auto x=pq.top(); pq.pop();
-        int w=x.F;
-        int node=x.S.F, parent=x.S.S;
-        if(!vis[node])
-        {
-            if(x.S.S!=-1) MST.pb({parent,node}); // add it to MST if not visited
-            vis[node]=1;
-            cost+=w;
-            for(auto c:adj[node])
-            {
-                int a=c.F, wt=c.S;
-                if(!vis[a]) pq.push({wt,{a,node}});
-            }
-        }
-    }
-    cout<<"Minimum spanning tree edges: "<<endl;
-    for(auto x:MST) cout<<x.F<<" "<<x.S<<endl;
-    cout<<"Minimum cost: "<<cost<<endl;
 }
 
 
@@ -58,4 +81,3 @@ int main()
  2 4 7
  3 4 9
 */
-
