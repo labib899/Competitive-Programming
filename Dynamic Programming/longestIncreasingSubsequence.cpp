@@ -34,11 +34,52 @@ typedef pair<ll,ll>             pll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 
 
-ll mod=1e9+7;
-ll inf=1e18;
+const ll mod=1e9+7;
+const ll inf=1e18;
 vll a,dp;
 
-ll LIS(ll n)
+ll LIS(ll n) // O(nlogn)
+{
+    vll temp; // this vector is not the LIS vector, but its size will give the length of LIS
+    temp.pb(a[0]);
+    for(int i=1;i<n;i++)
+    {
+        ll x=lower_bound(all(temp),a[i])-temp.begin();
+        if(x<temp.size()) temp[x]=a[i];
+        else temp.pb(a[i]);
+    }
+    return temp.size();
+}
+
+void solve()
+{
+    ll n; cin>>n;
+    a.resize(n+2);
+    //dp.resize(n+2,1);
+    for(int i=0;i<n;i++) cin>>a[i];
+    cout<<LIS(n)<<endl;
+}
+
+
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    //fRead("input.txt");
+    //fWrite("output.txt");
+    #endif
+    
+    fastIO;
+    int t=1; //cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        //printf("Case %d: ", i);
+        solve();
+    }
+}
+
+
+/*
+ll LIS(ll n) // bottom up, O(n^2)
 {
     ll ans=-inf;
     for(int k=0;k<n;k++)
@@ -51,35 +92,11 @@ ll LIS(ll n)
     }
     return ans;
 }
-
-void solve()
-{
-    ll n; cin>>n;
-    a.resize(n+2);
-    dp.resize(n+2,1);
-    for(int i=0;i<n;i++) cin>>a[i];
-    cout<<LIS(n)<<endl;
-}
-
-
-int main()
-{
-#ifndef ONLINE_JUDGE
-    //fRead("input.txt");
-    //fWrite("output.txt");
-#endif
-    fastIO;
-    int t=1; //cin>>t;
-    for(int i=1;i<=t;i++)
-    {
-        //printf("Case %d: ", i);
-        solve();
-    }
-}
+*/
 
 
 /*
-int lis(int i,int prev) // top down
+int lis(int i,int prev) // top down, O(n^2)
 {
     if(i==N) return 0;
     if(dp[i][prev+1]!=-1) return dp[i][prev+1];
