@@ -34,7 +34,7 @@ void Union(ll a,ll b) // Union by size, O(4a)
     parent[b]=a;
 }
 
-void kruskal(ll n)
+void kruskal(ll n) // O(Elogv), faster for sparse graphs
 {
     sort(all(adj)); // sorting by weight
     make(n);
