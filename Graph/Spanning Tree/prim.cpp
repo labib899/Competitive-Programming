@@ -18,7 +18,7 @@ vector<vector<pll>> adj;
 vector<pll> MST;
 vll vis;
 
-void prim(ll n)
+void prim(ll n) // O(E+VlogV), faster for dense graphs compared to Kruskal
 {
     PQ<tlll,vector<tlll>,greater<tlll>> pq;
     pq.push(mt(0,0,-1)); // pushing {distance,node,parent}
