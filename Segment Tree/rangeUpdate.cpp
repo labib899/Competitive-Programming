@@ -55,7 +55,7 @@ void update(int ind,int low,int high,int l,int r,int val)
     if(high<l || low>r) return;
     if(l<=low && high<=r)
     {
-        seg[ind]+=val*(r-l+1);
+        seg[ind]+=val*(high-low+1);
         if(low!=high)
         {
             lazy[2*ind+1]+=val;
