@@ -59,6 +59,7 @@ void dfs(int node)
     // take action on node after entering the node
     vis[node]=true;
     cout<<node<<" ";
+    
     for(auto c:graph[node])
     {
         if(!vis[c]) dfs(c);

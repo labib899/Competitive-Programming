@@ -8,7 +8,8 @@ vector<bool> vis;
 void dfs(int node,stack<int> &st);
 
 
-int main() {
+int main() 
+{
     int n,m; cin>>n>>m;
     adj.resize(n+1),vis.resize(n+1,false);
     for(int i=1;i<=m;i++)
@@ -16,6 +17,7 @@ int main() {
         int a,b; cin>>a>>b;
         adj[a].pb(b);
     }
+
     stack<int> st;
     for(int i=0;i<n;i++)
     {

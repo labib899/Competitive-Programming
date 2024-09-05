@@ -65,7 +65,8 @@ void bfs(int node)
         cout<<p<<" level: "<<level[p]<<" ";
         for(auto c:graph[p])
         {
-            if(!vis[c]) {
+            if(!vis[c]) 
+            {
                 q.push(c);
                 vis[c]=true;
                 level[c]=level[p]+1;

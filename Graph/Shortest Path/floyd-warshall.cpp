@@ -1,47 +1,64 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define inf             1e18
 typedef long long       ll;
 typedef vector<ll>      vll;
+typedef vector<vll>     vvll;
 
-const ll inf=1e18;
-vector<vll> dist;
+vvll dist;
+ll n,m;
 
-void floyd(ll n)
+void floyd()
 {
-    for(int k=1;k<=n;k++)
-        for(int i=1;i<=n;i++)
-           for(int j=1;j<=n;j++)
-                if(dist[i][k]<inf && dist[k][j]<inf) // to handle negative weights
-                    dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j]);
+    for(int k=0;k<n;k++)
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j]);
 }
 
-void solve()
-{
-    ll n,m,q; cin>>n>>m>>q;
-    dist.resize(n+2,vll(n+2,inf));
-    for(int i=1;i<=m;i++)
-    {
-        ll a,b,c; cin>>a>>b>>c;
-        dist[a][b]=dist[b][a]=min(c,dist[a][b]); // for multiple edges
-    }
-    for(int i=1;i<=n;i++) dist[i][i]=0;
-
-    floyd(n);
-    while(q--)
-    {
-        ll a,b; cin>>a>>b;
-        // if(a==b && dist[a][b]<0) then negative cycle exists...
-        if(dist[a][b]==inf) cout<<-1<<endl;
-        else cout<<dist[a][b]<<endl;
-    }
-}
 
 int main()
 {
-    int t=1; //cin>>t;
-    while(t--)
+    cin>>n>>m;
+    dist.resize(n+2,vll(n+2,inf));
+    for(int i=1;i<=m;i++)
     {
-        solve();
+        ll a,b,w; cin>>a>>b>>w;
+        dist[a][b]=w;
+        dist[b][a]=w; // for undirected graphs
+    }
+    // initializing distance matrix
+    for(int i=0;i<n;i++) dist[i][i]=0;
+    // floyd warshall algo
+    floyd();
+
+    // checking negative cycle
+    /*for(int i=0;i<n;i++)
+    {
+        if(dist[i][i]<0) 
+        {
+            cout<<"Negative Cycle"<<endl;
+            return -1;
+        }
+    }*/
+    // printing solution
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++) 
+        {
+            if(dist[i][j]==inf) cout<<"inf ";
+            else cout<<dist[i][j]<<" ";
+        }
+        cout<<endl;
     }
 }
+
+
+/*
+4 4
+0 1 5
+0 3 10
+1 2 3
+2 3 1
+*/

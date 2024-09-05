@@ -27,9 +27,7 @@ bool dfs(int node,int p)
 void solve()
 {
     int n,m; cin>>n>>m;
-    g.resize(n+1);
-    vis.resize(n+1,0);
-    parent.resize(n+1,-1);
+    g.resize(n+1); vis.resize(n+1,0); parent.resize(n+1,-1);
     for(int i=1;i<=m;i++)
     {
         int a,b; cin>>a>>b;
@@ -68,3 +66,27 @@ signed main()
     ios_base::sync_with_stdio(0);cin.tie(0);
     solve();
 }
+
+
+
+
+/*
+bool dfs(int node)
+{
+    vis[node]=1;
+    for(auto c:g[node])
+    {
+        if(!vis[c]) 
+        {
+            parent[c]=node;
+            if(dfs(c)) return true;
+        }
+        else if(c!=parent[node]) 
+        {   
+            cycle_start=c,cycle_end=node;
+            return true;
+        }
+    }
+    return false;
+}
+*/

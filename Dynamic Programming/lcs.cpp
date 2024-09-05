@@ -15,12 +15,30 @@ int lcs(int i,int j,string s,string t,vvi &dp)
 }
 
 
+string printLCS(string s,string t,vvi &dp)
+{
+    int n=s.size(),m=t.size();
+    int len=dp[n-1][m-1];
+    string ans;
+    for(int i=0;i<len;i++) ans+="$";
+    int i=n-1,j=m-1;
+    int idx=len-1;
+    while(i>=0 && j>=0)
+    {
+        if(s[i]==t[j]) ans[idx--]=s[i],i--,j--;
+        else if(dp[i-1][j]>dp[i][j-1]) i--;
+        else j--;
+    }
+    return ans;
+}
+
+
 int main()
 {
     string s,t; cin>>s>>t;
     int n=s.size(),m=t.size();
     vvi dp(n+2,vi(m+2,-1));
-    cout<<lcs(n-1,m-1,s,t,dp)<<endl;
+    cout<<lcs(n-1,m-1,s,t,dp)<<endl<<printLCS(s,t,dp)<<endl;
 }
 
 

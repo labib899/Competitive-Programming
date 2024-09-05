@@ -31,6 +31,7 @@ int main()
     //freopen("input.txt","r",stdin);
     //freopen("output.txt","w",stdout);
 #endif
+
     fastIO;
     int t=1; cin>>t;
     while(t--) solve();
@@ -41,7 +42,8 @@ void solve()
     int n,m; cin>>n>>m; // n nodes, m edges
     graph.resize(n);
     color.resize(n,-1);
-    for(int i=0;i<m;i++) {
+    for(int i=0;i<m;i++) 
+    {
         int a,b; cin>>a>>b;
         graph[a].pb(b);
         graph[b].pb(a);
@@ -49,7 +51,7 @@ void solve()
     bool bi=1;
     for(int i=0;i<n;i++)
     {
-        if(color[i]==-1)
+        if(color[i]==-1) // if not visited
         {
             bi &=bfs(i);
         }
@@ -69,7 +71,8 @@ bool bfs(int node)
         int p=q.front(); q.pop();
         for(auto c:graph[p])
         {
-            if(color[c]==-1) {
+            if(color[c]==-1) // if not visited
+            {
                 q.push(c);
                 color[c]=1-color[p];
             }

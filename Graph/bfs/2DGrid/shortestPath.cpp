@@ -4,12 +4,10 @@ using namespace std;
 typedef pair<int,int> pii;
 
 int n,m,srcX,srcY;
-vector<char> path;
 vector<vector<char>> g,dir;
 vector<vector<int>> vis,dist;
-vector<int> dx={-1,0,1,0}; 
-vector<int> dy={0,1,0,-1};
-string d="URDL";
+vector<int> dx={-1,0,1,0}, dy={0,1,0,-1};
+string d="URDL", path;
 
 bool isValid(int x,int y)
 {
@@ -41,6 +39,7 @@ bool bfs(int x,int y)
 
                 if(px==x and py==y) break;
             }
+            reverse(path.begin(),path.end());
             return true;
         }
 
@@ -52,7 +51,7 @@ bool bfs(int x,int y)
                 q.push({newX,newY});
                 vis[newX][newY]=1;
                 dir[newX][newY]=d[i];
-                //dist[newx][newy]=dist[px][py]+1;
+                //dist[newX][newY]=dist[px][py]+1;
             }
         }
     }
@@ -74,12 +73,7 @@ void solve()
             if(g[i][j]=='A') srcX=i,srcY=j;
         }
     }
-    if(bfs(srcX,srcY))
-    {
-        cout<<"YES"<<endl<<path.size()<<endl;
-        for(int i=path.size()-1;i>=0;i--) cout<<path[i];
-        cout<<endl;
-    }
+    if(bfs(srcX,srcY)) cout<<"YES"<<endl<<path.size()<<endl<<path<<endl;
     else cout<<"NO"<<endl;
 }
 

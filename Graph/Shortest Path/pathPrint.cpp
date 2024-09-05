@@ -5,17 +5,19 @@ using namespace std;
 #define pb				push_back
 #define ff 				first
 #define ss    			second
+#define all(x)			x.begin(),x.end()
 #define inf				1e18
 typedef long long		ll;
 typedef vector<ll>		vll;
 typedef pair<ll,ll>		pll;
 
 vector<vector<pll>> adj;
-vll dist,vis;
+vll dist,parent;
 
-void dijkstra(ll source)
+void dijkstra(ll source,ll dest)
 {
 	dist[source]=0;
+	parent[source]=-1;
 	PQ<pll,vector<pll>,greater<pll>> pq;
 	pq.push({0,source}); // push {distance,node}
 	while(pq.size())
@@ -23,8 +25,6 @@ void dijkstra(ll source)
 		ll d=pq.top().ff;
 		ll node=pq.top().ss; 
 		pq.pop();
-		if(vis[node]) continue;
-		vis[node]=1;
 		for(auto x:adj[node])
 		{
 			ll adjNode=x.ff,w=x.ss;
@@ -32,6 +32,7 @@ void dijkstra(ll source)
 			{
 				dist[adjNode]=d+w;
 				pq.push({dist[adjNode],adjNode});
+				parent[adjNode]=node;
 			}
 		}
 	}
@@ -43,8 +44,7 @@ int main()
 	ll n,m; cin>>n>>m;
 	adj.resize(n+2);
 	dist.resize(n+2,inf);
-	vis.resize(n+2);
-
+	parent.resize(n+2,0);
 	for(int i=1;i<=m;i++)
 	{
 		ll a,b,w; cin>>a>>b>>w;
@@ -52,10 +52,24 @@ int main()
 		adj[b].pb({a,w});
 	}
 
-	ll source; cin>>source; 
-	dijkstra(source);
-	for(int i=0;i<n;i++) cout<<dist[i]<<" ";
-	cout<<endl;
+	ll source,dest; cin>>source>>dest; 
+	dijkstra(source,dest);
+	
+	if(dist[dest]==inf) cout<<-1<<endl; // No path
+	else
+	{
+		// path printing
+		vll path;
+		ll node=dest;
+		while(node!=-1)
+		{
+			path.pb(node);
+			node=parent[node];
+		}
+		reverse(all(path));
+		for(auto x: path) cout<<x<<" ";
+		cout<<endl;
+	}
 }
 
 
@@ -75,5 +89,5 @@ int main()
 6 7 1
 6 8 6
 7 8 7
-0 
+0 4
 */

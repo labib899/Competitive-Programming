@@ -28,9 +28,7 @@ bool dfs(int node)
 void solve()
 {
     int n,m; cin>>n>>m;
-    g.resize(n+1);
-    color.resize(n+1,0);
-    parent.resize(n+1,-1);
+    g.resize(n+1); color.resize(n+1,0); parent.resize(n+1,-1);
     for(int i=1;i<=m;i++)
     {
         int a,b; cin>>a>>b;
