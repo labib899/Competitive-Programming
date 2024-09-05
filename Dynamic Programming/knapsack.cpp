@@ -2,19 +2,53 @@
 using namespace std;
  
 #define fastIO ios::sync_with_stdio(0);cin.tie(0);
-#define endl "\n"
-#define forn(j,n,x) for(ll i=j;i<n;i+=x)
-typedef long long ll;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
-typedef vector<ll> vll;
+
+int n,w;
+vvi dp;
+vi wt,val;
+
+// iterative
+void knapsack()
+{
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=w;j++)
+        {
+            int yes=(wt[i]<=j ? dp[i-1][j-wt[i]]+val[i]:0);
+            int no=dp[i-1][j];
+            dp[i][j]=max(yes,no);
+        }
+    }
+}
+
+void solve() 
+{
+    cin>>n>>w;
+    wt.resize(n+1); val.resize(n+1);
+    dp.resize(n+1,vi(w+1,0));
+    for(int i=1;i<=n;i++) cin>>wt[i];
+    for(int i=1;i<=n;i++) cin>>val[i];
+    knapsack();
+    cout<<dp[n][w]<<endl;
+}
+
+int main() 
+{
+    fastIO;
+    int t=1; //cin>>t;
+    while(t--) solve();
+}
+
+/*
+7 15
+2 3 5 7 1 4 1
+10 5 15 7 6 18 3
+*/
 
 
-void solve();
-const int N=1e3+10;
-vvi dp(N,vi(N,-1));
-vi wt(N),val(N);
-
+/* recursive
 int knap(int i,int w)
 {
     if(i==0)
@@ -28,33 +62,4 @@ int knap(int i,int w)
     if(wt[i]<=w) yes=val[i]+knap(i-1,w-wt[i]);
     return dp[i][w]=max(no,yes);
 }
-
-
-
-int main() {
-#ifndef ONLINE_JUDGE
-    //freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
-#endif
-    fastIO;
-    int t=1; //cin>>t;
-    while(t--) solve();
-}
-
-void solve() {
-    int n,w; cin>>n>>w;
-    forn(0,n,1) cin>>wt[i]>>val[i];
-    cout<<knap(n-1,w)<<endl;
-}
-
-
-/*
- 7 15
- 2 10
- 3 5
- 5 15
- 7 7
- 1 6
- 4 18
- 1 3
- */
+*/

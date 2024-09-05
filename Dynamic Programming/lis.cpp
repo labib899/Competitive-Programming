@@ -1,44 +1,63 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-typedef vector<int> vi;
-typedef vector<vi> vvi;
+int n;
+vector<int> vec,dp;
 
-const int N=1e3+10;
-vi v(N);
-vvi dp(N,vi(N+1,-1));
-
-int lis(int i,int prev)
+// O(nlogn)
+int LIS()
 {
-    if(i==N) return 0;
-    if(dp[i][prev+1]!=-1) return dp[i][prev+1];
-    int no=lis(i+1,prev);
-    int yes=0;
-    if(prev==-1 || v[i]>v[prev]) yes=1+lis(i+1,i);
-    return dp[i][prev+1]=max(no,yes);
+    vector<int> len; // this is not the actual LIS vector, rather it's size gives the length of LIS
+    len.push_back(vec[0]);
+    for(int i=1;i<n;i++)
+    {
+        int ind=lower_bound(len.begin(),len.end(),vec[i])-len.begin();
+        if(ind>=0 and ind<len.size()) len[ind]=vec[i]; 
+        else len.push_back(vec[i]);
+    }
+    return len.size();
 }
 
-// ll LIS(ll n) // O(nlogn)
-// {
-//     vll temp; // this vector is not the LIS vector, but its size will give the length of LIS
-//     temp.pb(a[0]);
-//     for(int i=1;i<n;i++)
-//     {
-//         ll x=lower_bound(all(temp),a[i])-temp.begin();
-//         if(x<temp.size()) temp[x]=a[i];
-//         else temp.pb(a[i]);
-//     }
-//     return temp.size();
-// }
-
-
-int main()
+void solve()
 {
-    int n; cin>>n;
-    for(int i=0;i<n;i++) cin>>v[i];
-    cout<<lis(0,-1)<<endl;
+    cin>>n;
+    vec.resize(n); dp.resize(n,1);
+    for(int i=0;i<n;i++) cin>>vec[i];
+    cout<<LIS()<<endl;
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int t=1; //cin>>t;
+    while(t--) solve();
 }
 
 
 
 
+/* iterative, O(n^2)
+void LIS()
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(vec[j]<vec[i]) dp[i]=max(dp[i],dp[j]+1);
+        }
+    }
+}
+*/
+
+/* recursive, O(n^2)
+int lis(int i)
+{   
+    if(dp[i]!=-1) return dp[i];
+    int ans=1;
+    for(int j=0;j<i;j++)
+    {
+        if(vec[j]<vec[i]) ans=max(ans,lis(j)+1);
+    }
+    return dp[i]=ans;
+}
+*/
