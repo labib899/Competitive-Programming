@@ -24,7 +24,8 @@ const int N=1e5+10;
 vi prime(N,1);
 
 
-int main() {
+int main() 
+{
 #ifndef ONLINE_JUDGE
     //freopen("input.txt","r",stdin);
     //freopen("output.txt","w",stdout);
@@ -35,15 +36,18 @@ int main() {
     while(t--) solve();
 }
 
-void solve() {
+void solve() 
+{
     ll n; cin>>n;
     for(int i=2;i<=n;i++) {
         if(prime[i]) cout<<i<<" ";
     }
 }
 
-void sieve() {
-    for(int i=2;i<=N;i++) {
+void sieve() 
+{
+    for(int i=2;i<=N;i++) 
+    {
         if(prime[i]==0) continue;
         for(int j=2*i;j<=N;j+=i) prime[j]=0;
     }

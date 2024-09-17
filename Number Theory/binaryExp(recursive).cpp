@@ -33,7 +33,8 @@ void solve() {
     cout<<pow(n,p,mod)<<endl;
 }
 
-ll pow(ll x,ll p,ll m) {
+ll pow(ll x,ll p,ll m) 
+{
     if(p==0) return 1%m;
     ll a=pow(x,p/2,m);
     a=(a*a)%m;

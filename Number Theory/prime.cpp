@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<iostream>
 //#include<ext/pb_ds/assoc_container.hpp>
 using namespace std;
 //using namespace __gnu_pbds;
@@ -43,7 +42,7 @@ int main() {
 
 void solve() {
     ll n; cin>>n;
-    map< int,int > ans=factor(n);
+    map<int,int> ans=factor(n);
     for(auto &x:ans) {
         for(int i=1;i<=x.second;i++) {
             cout<<x.first<<" ";
@@ -76,8 +75,8 @@ void div() {
     }
 }
 
-map< int,int > factor(int n) {
-    map< int,int > f;
+map<int,int> factor(int n) {
+    map<int,int> f;
     for(int i=2;i*i<=n;i++) {
         while(n%i==0) {
             f[i]++;

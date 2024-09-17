@@ -9,60 +9,45 @@ vector<int> arr(N),seg(4*N),lazy(4*N);
 // build(index of root,low,high)
 void build(int ind,int low,int high)
 {   
-    if(low==high) 
-    {
-        seg[ind]=arr[low];
-        return;
-    }
+    if(low==high) { seg[ind]=arr[low]; return; }
     int mid=(low+high)/2;
-    build(2*ind+1,low,mid); // build left tree
-    build(2*ind+2,mid+1,high); // build right tree
-    seg[ind]=seg[2*ind+1]+seg[2*ind+2]; // sum
+    build(2*ind+1,low,mid);  // build left tree
+    build(2*ind+2,mid+1,high);  // build right tree
+    seg[ind]=seg[2*ind+1]+seg[2*ind+2];  // sum
 }
 
 int query(int ind,int low,int high,int l,int r)
 {   
-    if(lazy[ind]) // pending updates
+    if(lazy[ind])  // pending updates
     {
         seg[ind]+=lazy[ind]*(high-low+1);
-        if(low!=high)
-        {
-            lazy[2*ind+1]+=lazy[ind];
-            lazy[2*ind+2]+=lazy[ind];
-        }
+        if(low!=high) lazy[2*ind+1]+=lazy[ind], lazy[2*ind+2]+=lazy[ind];
         lazy[ind]=0;
     }
-    if(l<=low and high<=r) return seg[ind]; // completely inside the query
-    if(high<l || low>r) return 0; // completely outside of the query
+    if(l<=low and high<=r) return seg[ind];  // completely inside the query
+    if(high<l or low>r) return 0;  // completely outside of the query
     int mid=(low+high)/2;
-    int left=query(2*ind+1,low,mid,l,r); // left tree
-    int right=query(2*ind+2,mid+1,high,l,r); // right tree
+    int left=query(2*ind+1,low,mid,l,r);  // left tree
+    int right=query(2*ind+2,mid+1,high,l,r);  // right tree
     return left+right;
 }
 
+// O(logn)
 void update(int ind,int low,int high,int l,int r,int val)
 {
-    if(lazy[ind]) // pending updates
+    if(lazy[ind])  // pending updates
     {
         seg[ind]+=lazy[ind]*(high-low+1);
-        if(low!=high)
-        {
-            lazy[2*ind+1]+=lazy[ind];
-            lazy[2*ind+2]+=lazy[ind];
-        }
+        if(low!=high) lazy[2*ind+1]+=lazy[ind], lazy[2*ind+2]+=lazy[ind]; // if children exist
         lazy[ind]=0;
     }
-    if(high<l || low>r) return;
-    if(l<=low && high<=r)
+    if(l<=low and high<=r)  // completely inside
     {
         seg[ind]+=val*(high-low+1);
-        if(low!=high)
-        {
-            lazy[2*ind+1]+=val;
-            lazy[2*ind+2]+=val;
-        }
+        if(low!=high) lazy[2*ind+1]+=val, lazy[2*ind+2]+=val;
         return;
     }
+    if(high<l or low>r) return;  // completely outside
     int mid=(low+high)/2;
     update(2*ind+1,low,mid,l,r,val);
     update(2*ind+2,mid+1,high,l,r,val);
@@ -95,10 +80,8 @@ void solve()
 
 signed main()
 {
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    ios_base::sync_with_stdio(0);cin.tie(0);
     int t=1; //cin>>t;
-    while(t--)
-    {
-        solve();
-    }
+    while(t--) solve();
 }
+ 
