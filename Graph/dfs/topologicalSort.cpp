@@ -52,3 +52,6 @@ void dfs(int node,stack<int> &st)
  3 4
  5 4
  */
+
+
+// directed graph

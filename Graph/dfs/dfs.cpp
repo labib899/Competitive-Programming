@@ -25,10 +25,6 @@ void dfs(int node);
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-    //freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
-#endif
     fastIO;
     int t=1; //cin>>t;
     while(t--) solve();
