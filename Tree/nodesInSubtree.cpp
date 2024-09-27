@@ -6,7 +6,7 @@ vector<int> cnt,vis;
 
 void dfs(int node)
 {
-    vis[node]=1;
+    vis[node]=1; cnt[node]=1;
     for(auto c:g[node])
     {
         if(vis[c]==0) 
@@ -20,9 +20,7 @@ void dfs(int node)
 void solve()
 {
     int n; cin>>n;
-    g.resize(n+1);
-    cnt.resize(n+1,1);
-    vis.resize(n+1,0);
+    g.resize(n+1); cnt.resize(n+1,0); vis.resize(n+1,0);
     for(int i=2;i<=n;i++)
     {
         int x; cin>>x;

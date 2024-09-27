@@ -66,9 +66,7 @@ template<class T,class V> void _print(map<T,V> m) {cerr<<"[ ";for(auto x:m) {_pr
 int n,m;
 vector<vector<char>> g;
 vvi vis;
-
-vi dx={-1,0,1,0};
-vi dy={0,1,0,-1};
+vi dx={-1,0,1,0}, dy={0,1,0,-1};
 
 bool isValid(int x,int y)
 {
