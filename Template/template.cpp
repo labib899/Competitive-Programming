@@ -6,7 +6,7 @@ using namespace std;
 //using namespace __gnu_pbds;
 //using namespace __gnu_cxx;
  
-#define fastIO                  ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define fastio                  ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 #define endl                    "\n"
 #define pb                      push_back
 #define mp                      make_pair
@@ -78,11 +78,11 @@ signed main()
     //freopen("error.txt","w",stderr);
     #endif
     
-    fastIO;
+    fastio;
     int t=1; cin>>t;
     for(int i=1;i<=t;i++)
     {
-        //printf("Case %d: ", i);
+        //printf("Case %d: ", i); 
         solve();
     }
 }
