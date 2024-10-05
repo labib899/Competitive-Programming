@@ -27,7 +27,7 @@ int cost(int start,int end)
 }
 
 
-int main()
+signed main()
 {
     int len,n; cin>>len>>n; // n is the number of cutting points
     cuts.resize(n+2);

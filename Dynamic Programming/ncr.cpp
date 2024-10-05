@@ -3,10 +3,11 @@ using namespace std;
 
 typedef long long  ll;
 typedef vector<ll> vll;
+typedef vector<vector<ll>> vvll;
 
 const ll N=1e3+10;
 ll mod=1e9+7;
-vector<vll> dp(N,vll(N,-1));
+vvll dp(N,vll(N,-1));
 
 
 ll ncr(ll n,ll r)
@@ -18,7 +19,7 @@ ll ncr(ll n,ll r)
 }
 
 
-int main()
+signed main()
 {
     ll n,r; cin>>n>>r;
     cout<<ncr(n,r)<<endl;

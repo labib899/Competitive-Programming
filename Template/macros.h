@@ -1,3 +1,6 @@
+#ifndef MACROS_H
+#define MACROS_H
+
 #include <bits/stdc++.h>
 //#include <ext/pb_ds/assoc_container.hpp>
 //#include <bits/stdtr1c++.h>
@@ -37,3 +40,7 @@ typedef pair<ll,ll>             pll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 const ll mod=1e9+7;
 const ll inf=LLONG_MAX;
+
+
+
+#endif

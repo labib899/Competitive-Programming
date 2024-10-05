@@ -1,3 +1,6 @@
+#ifndef CUSTOM_HASH_H
+#define CUSTOM_HASH_H
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 
@@ -25,3 +28,7 @@ unordered_map<long long,int,custom_hash> safe_map;
 gp_hash_table<long long,int,custom_hash> safe_hash_table;
 
 // http://xorshift.di.unimi.it/splitmix64.c
+
+
+
+#endif

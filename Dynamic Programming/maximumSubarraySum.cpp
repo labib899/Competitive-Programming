@@ -1,11 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef vector<int> vi;
+vector<int> v;
 
-vi v;
-
-int maxSum(vi &v)
+int maxSum(vector<int> &v)
 {
     int n=v.size();
     int maxi=INT_MIN,sum=0;
@@ -17,7 +15,7 @@ int maxSum(vi &v)
     return maxi;
 }
 
-int main()
+signed main()
 {
     int n;cin>>n;
     v.resize(n);

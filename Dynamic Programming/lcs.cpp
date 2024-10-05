@@ -33,7 +33,7 @@ string printLCS(string s,string t,vvi &dp)
 }
 
 
-int main()
+signed main()
 {
     string s,t; cin>>s>>t;
     int n=s.size(),m=t.size();

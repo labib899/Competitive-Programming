@@ -42,7 +42,7 @@ const ll inf=LLONG_MAX;
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr<<#x<<": ";_print(x);cerr<<endl;
 #else 
-#define debug(x)
+#define debug(x);
 #endif
 
 void _print(int x) {cerr<<x;}

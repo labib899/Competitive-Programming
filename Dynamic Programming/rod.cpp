@@ -1,12 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef vector<int> vi;
-
-vi price;
+vector<int> price;
 
 // top down
-int rev(int n,vi &dp)
+int rev(int n,vector<int> &dp)
 {
     if(n==0) return 0;
     if(dp[n]!=-1) return dp[n];
@@ -20,12 +18,12 @@ int rev(int n,vi &dp)
 }
 
 
-int main()
+signed main()
 {
     int n; cin>>n;
     price.resize(n+1);
     for(int i=1;i<=n;i++) cin>>price[i];
-    vi dp(n+2,-1);
+    vector<int> dp(n+2,-1);
     cout<<rev(n,dp)<<endl;
 }
 

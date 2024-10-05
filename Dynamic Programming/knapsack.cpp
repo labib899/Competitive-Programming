@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
  
-#define fastIO ios::sync_with_stdio(0);cin.tie(0);
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 
@@ -34,9 +33,9 @@ void solve()
     cout<<dp[n][w]<<endl;
 }
 
-int main() 
+signed main() 
 {
-    fastIO;
+    ios_base::sync_with_stdio(0);cin.tie(0);
     int t=1; //cin>>t;
     while(t--) solve();
 }
