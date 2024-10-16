@@ -39,6 +39,7 @@ typedef pair<ll,ll>             pll;
 //typedef tuple<ll,ll,ll>         tlll;
 //typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 const ll mod=1e9+7;
+const ll mod1=998244353;
 const ll inf=LLONG_MAX;
 
 

@@ -33,7 +33,8 @@ void solve()
 {
     cin>>n>>q;
     logn=log2(n)+1;
-    vec.resize(n+1); st.resize(n+1,vector<ll>(logn));
+    vec.resize(n+1); 
+    st.resize(n+1,vector<ll>(logn));
     for(int i=1;i<=n;i++) cin>>vec[i];
     build();
     while(q--)
