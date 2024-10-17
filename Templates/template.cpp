@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-//#include <bits/stdtr1c++.h>
-//#include <bits/extc++.h>
+// #include <ext/pb_ds/assoc_container.hpp>
+// #include <bits/stdtr1c++.h>
+// #include <bits/extc++.h>
+
 using namespace std;
-//using namespace __gnu_pbds;
-//using namespace __gnu_cxx;
+// using namespace __gnu_pbds;
+// using namespace __gnu_cxx;
  
 #define fastio                  ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 #define endl                    "\n"
@@ -32,9 +33,9 @@ typedef vector<vll>             vvll;
 typedef vector<string>          vs;
 typedef pair<int,int>           pii;
 typedef pair<ll,ll>             pll;
-//typedef tuple<int,int,int>      tiii;
-//typedef tuple<ll,ll,ll>         tlll;
-//typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
+typedef tuple<int,int,int>      tiii;
+typedef tuple<ll,ll,ll>         tlll;
+// typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
 const ll mod=1e9+7;
 const ll mod1=998244353;
 const ll inf=LLONG_MAX;
@@ -64,6 +65,26 @@ template<class T> void _print(multiset<T> ms) {cerr<<"[ ";for(T x:ms){_print(x);
 template<class T,class V> void _print(pair<T,V> p) {cerr<<"{";_print(p.ff);cerr<<",";_print(p.ss);cerr<<"}";}
 template<class T,class V> void _print(map<T,V> m) {cerr<<"[ ";for(auto x:m) {_print(x);cerr<<" ";}cerr<<"]";}
 
+// struct custom_hash 
+// {
+//     static uint64_t splitmix64(uint64_t x) 
+//     {
+//         x += 0x9e3779b97f4a7c15;
+//         x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+//         x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+//         return x ^ (x >> 31);
+//     }
+
+//     size_t operator()(uint64_t x) const 
+//     {
+//         static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+//         return splitmix64(x + FIXED_RANDOM);
+//     }
+// };
+
+// unordered_map<long long,int,custom_hash> safe_map;
+// gp_hash_table<long long,int,custom_hash> safe_hash_table;
+
 
 
 void solve()
@@ -73,17 +94,17 @@ void solve()
 
 signed main()
 {
-    #ifndef ONLINE_JUDGE
-    //freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
-    //freopen("error.txt","w",stderr);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt","r",stdin);
+    // freopen("output.txt","w",stdout);
+    // freopen("error.txt","w",stderr);
+    // #endif
     
     fastio;
     int t=1; cin>>t;
     for(int i=1;i<=t;i++)
     {
-        //cout<<"Case "<<i<<": ";
+        // cout<<"Case "<<i<<": ";
         solve();
     }
 }
